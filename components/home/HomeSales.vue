@@ -41,7 +41,7 @@ const formatNumber = new Intl.NumberFormat('en', { style: 'currency', currency: 
 </script>
 
 <template>
-  <UDashboardCard
+  <DashboardCard
     title="Recent sales"
     description="You made 128 sales this month."
     icon="i-heroicons-chart-bar-20-solid"
@@ -72,5 +72,5 @@ const formatNumber = new Intl.NumberFormat('en', { style: 'currency', currency: 
         {{ formatNumber(sale.price) }}
       </p>
     </NuxtLink>
-  </UDashboardCard>
+  </DashboardCard>
 </template>

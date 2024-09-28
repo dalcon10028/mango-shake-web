@@ -94,11 +94,11 @@
           @leave="onLeave"
         >
           <DisclosurePanel v-if="link.children?.length && (slotProps?.open || link.collapsible === false)" static as="template">
-            <LayoutSidebarLinks :level="level + 1" :links="link.children" :draggable="link.draggable" :ui="ui" @update:links="emit('update:links', $event)">
+            <DashboardSidebarLinks :level="level + 1" :links="link.children" :draggable="link.draggable" :ui="ui" @update:links="emit('update:links', $event)">
               <template v-for="(_, name) in $slots" #[name]="slotData: any">
                 <slot :name="name" v-bind="slotData" />
               </template>
-            </LayoutSidebarLinks>
+            </DashboardSidebarLinks>
           </DisclosurePanel>
         </Transition>
       </component>

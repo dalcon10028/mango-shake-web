@@ -4,7 +4,7 @@ const appConfig = useAppConfig()
 
 const links = [{
   id: 'home',
-  label: 'Home',
+  label: '홈',
   icon: 'i-heroicons-home',
   to: '/',
   tooltip: {
@@ -12,39 +12,26 @@ const links = [{
     shortcuts: ['G', 'H']
   }
 }, {
-  id: 'inbox',
-  label: 'Inbox',
-  icon: 'i-heroicons-inbox',
-  to: '/inbox',
-  badge: '4',
+  id: 'wallet',
+  label: '자산',
+  icon: 'i-heroicons-wallet',
+  to: '/wallets',
   tooltip: {
-    text: 'Inbox',
+    text: 'Wallet',
     shortcuts: ['G', 'I']
   }
 }, {
-  id: 'users',
-  label: 'Users',
-  icon: 'i-heroicons-user-group',
-  to: '/users',
-  tooltip: {
-    text: 'Users',
-    shortcuts: ['G', 'U']
-  }
-}, {
   id: 'settings',
-  label: 'Settings',
+  label: '설정',
   to: '/settings',
   icon: 'i-heroicons-cog-8-tooth',
   children: [{
-    label: 'General',
+    label: '일반',
     to: '/settings',
     exact: true
   }, {
-    label: 'Members',
-    to: '/settings/members'
-  }, {
-    label: 'Notifications',
-    to: '/settings/notifications'
+    label: 'API 키',
+    to: '/settings/api-keys'
   }],
   tooltip: {
     text: 'Settings',
@@ -52,20 +39,20 @@ const links = [{
   }
 }]
 
-const footerLinks = [{
+const adminLinks = [{
   label: 'Invite people',
   icon: 'i-heroicons-plus',
-  to: '/settings/members'
+  to: '/'
 }, {
   label: 'Help & Support',
   icon: 'i-heroicons-question-mark-circle',
-  click: () => isHelpSlideoverOpen.value = true
+  // click: () => isHelpSlideoverOpen.value = true
 }]
 
 const groups = [{
   key: 'links',
   label: 'Go to',
-  commands: links.map(link => ({ ...link, shortcuts: link.tooltip?.shortcuts }))
+  commands: links.map(link => ({...link, shortcuts: link.tooltip?.shortcuts}))
 }, {
   key: 'code',
   label: 'Code',
@@ -79,33 +66,40 @@ const groups = [{
   }]
 }]
 
-const defaultColors = ref(['green', 'teal', 'cyan', 'sky', 'blue', 'indigo', 'violet'].map(color => ({ label: color, chip: color, click: () => appConfig.ui.primary = color })))
-const colors = computed(() => defaultColors.value.map(color => ({ ...color, active: appConfig.ui.primary === color.label })))
+const defaultColors = ref(['green', 'teal', 'cyan', 'sky', 'blue', 'indigo', 'violet'].map(color => ({
+  label: color,
+  chip: color,
+  click: () => appConfig.ui.primary = color
+})))
+const colors = computed(() => defaultColors.value.map(color => ({
+  ...color,
+  active: appConfig.ui.primary === color.label
+})))
 </script>
 
 <template>
   <div class="fixed inset-0 flex overflow-hidden">
-    <LayoutPanel
+    <DashboardPanel
       :width="250"
       :resizable="{ min: 200, max: 300 }"
     >
-      <LayoutNavbar
+      <DashboardNavbar
         class="!border-transparent"
         :ui="{ left: 'flex-1' }"
       >
         <template #left>
-          <LayoutDropdown />
+          <DashboardDropdown/>
         </template>
-      </LayoutNavbar>
-      <LayoutSidebar>
-        <LayoutSidebarLinks :links="links" />
-        <UDivider />
-        <LayoutSidebarLinks :links="links" />
+      </DashboardNavbar>
+      <DashboardSidebar>
+        <DashboardSidebarLinks :links="links"/>
+        <UDivider/>
+<!--        <DashboardSidebarLinks :links="adminLinks"/>-->
         <template #footer>
-          <LayoutUserDropDown />
+          <DashboardUserDropDown/>
         </template>
-      </LayoutSidebar>
-    </LayoutPanel>
-    <slot />
+      </DashboardSidebar>
+    </DashboardPanel>
+    <slot/>
   </div>
 </template>

@@ -2,16 +2,14 @@
 import { sub } from 'date-fns'
 import type { Period, Range } from '~/types'
 
-// const { isNotificationsSlideoverOpen } = useDashboard()
-
 const items = [[{
   label: 'New mail',
   icon: 'i-heroicons-paper-airplane',
-  to: '/inbox'
+  to: '/'
 }, {
   label: 'New user',
   icon: 'i-heroicons-user-plus',
-  to: '/users'
+  to: '/'
 }]]
 
 const range = ref<Range>({ start: sub(new Date(), { days: 14 }), end: new Date() })
@@ -19,9 +17,9 @@ const period = ref<Period>('daily')
 </script>
 
 <template>
-  <LayoutPage>
-    <LayoutPanel grow>
-      <LayoutNavbar title="Home">
+  <DashboardPage>
+    <DashboardPanel grow>
+      <DashboardNavbar title="Home">
         <template #right>
           <UTooltip
             text="Notifications"
@@ -53,17 +51,15 @@ const period = ref<Period>('daily')
             />
           </UDropdown>
         </template>
-      </LayoutNavbar>
+      </DashboardNavbar>
 
       <Toolbar>
         <template #left>
-          <!-- ~/components/home/HomeDateRangePicker.vue -->
           <HomeDateRangePicker
             v-model="range"
             class="-ml-2.5"
           />
 
-          <!-- ~/components/home/HomePeriodSelect.vue -->
           <HomePeriodSelect
             v-model="period"
             :range="range"
@@ -72,19 +68,16 @@ const period = ref<Period>('daily')
       </Toolbar>
 
       <PanelContent>
-        <!-- ~/components/home/HomeChart.vue -->
-        <!-- <HomeChart
+        <HomeChart
           :period="period"
           :range="range"
-        /> -->
+        />
 
         <div class="grid lg:grid-cols-2 lg:items-start gap-8 mt-8">
-          <!-- ~/components/home/HomeSales.vue -->
-          <!-- <HomeSales /> -->
-          <!-- ~/components/home/HomeCountries.vue -->
-          <!-- <HomeCountries /> -->
+           <HomeSales />
+           <HomeCountries />
         </div>
       </PanelContent>
-    </LayoutPanel>
-  </LayoutPage>
+    </DashboardPanel>
+  </DashboardPage>
 </template>

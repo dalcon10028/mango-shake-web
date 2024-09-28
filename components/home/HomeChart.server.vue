@@ -1,5 +1,5 @@
 <template>
-  <UDashboardCard
+  <DashboardCard
     ref="cardRef"
     :ui="{ body: { padding: '!pb-3 !px-0' } }"
   >
@@ -15,5 +15,5 @@
     </template>
 
     <div class="h-96" />
-  </UDashboardCard>
+  </DashboardCard>
 </template>

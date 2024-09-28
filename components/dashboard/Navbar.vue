@@ -2,10 +2,6 @@
   <div :class="ui.wrapper" v-bind="attrs">
     <div :class="ui.container">
       <div :class="ui.left">
-        <!-- <slot name="toggle">
-          <UDashboardNavbarToggle />
-        </slot> -->
-
         <slot name="left">
           <h1 v-if="title || $slots.title" :class="ui.title">
             <slot name="title">

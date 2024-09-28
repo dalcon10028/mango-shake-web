@@ -35,7 +35,7 @@ const countries = [{
 </script>
 
 <template>
-  <UDashboardCard
+  <DashboardCard
     title="Top countries"
     description="You made sales in 20 countries this month."
     icon="i-heroicons-globe-alt-20-solid"
@@ -53,5 +53,5 @@ const countries = [{
         indicator
       />
     </div>
-  </UDashboardCard>
+  </DashboardCard>
 </template>
