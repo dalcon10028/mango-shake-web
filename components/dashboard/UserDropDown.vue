@@ -9,7 +9,7 @@ const items = computed(() => [
     label: '',
     disabled: true
   }], [{
-    label: 'API 키 추가',
+    label: 'Open API 키 등록',
     icon: 'i-heroicons-key',
     to: 'https://ui.nuxt.com/pro/purchase',
     target: '_blank'

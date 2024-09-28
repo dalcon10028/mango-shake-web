@@ -30,8 +30,8 @@ const links = [{
     to: '/settings',
     exact: true
   }, {
-    label: 'API 키',
-    to: '/settings/api-keys'
+    label: 'Open API 관리',
+    to: '/settings/api-key'
   }],
   tooltip: {
     text: 'Settings',

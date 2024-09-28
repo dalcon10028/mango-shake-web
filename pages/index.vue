@@ -53,7 +53,7 @@ const period = ref<Period>('daily')
         </template>
       </DashboardNavbar>
 
-      <Toolbar>
+      <DashboardToolbar>
         <template #left>
           <HomeDateRangePicker
             v-model="range"
@@ -65,7 +65,7 @@ const period = ref<Period>('daily')
             :range="range"
           />
         </template>
-      </Toolbar>
+      </DashboardToolbar>
 
       <PanelContent>
         <HomeChart
