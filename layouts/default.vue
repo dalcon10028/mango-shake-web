@@ -106,5 +106,6 @@ const colors = computed(() => defaultColors.value.map(color => ({ ...color, acti
         </template>
       </LayoutSidebar>
     </LayoutPanel>
+    <slot />
   </div>
 </template>
