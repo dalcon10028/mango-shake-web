@@ -1,5 +1,12 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  ssr: false,
+  hooks: {
+    // https://nuxt.com/docs/guide/concepts/rendering#universal-rendering
+    'prerender:routes' ({ routes }) {
+      routes.clear() // Do not generate any routes (except the defaults)
+    }
+  },
   devtools: { enabled: true },
   modules: ["@nuxt/ui", "@vueuse/nuxt", "@nuxt/icon", '@nuxt/eslint'],
 
