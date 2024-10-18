@@ -1,4 +1,11 @@
 <script setup lang="ts">
+const config = useRuntimeConfig()
+
+if (config.public.enableMocking) {
+  const { worker } = await import('~/mocks/browser')
+  await worker.start()
+}
+
 const colorMode = useColorMode()
 
 const color = computed(() => colorMode.value === 'dark' ? '#111827' : 'white')
