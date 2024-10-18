@@ -7,6 +7,12 @@ export default defineNuxtConfig({
       routes.clear() // Do not generate any routes (except the defaults)
     }
   },
+  runtimeConfig: {
+    public: {
+      baseURL: process.env.BASE_URL || 'http://localhost:8080'
+    }
+  },
+
   devtools: { enabled: true },
   modules: ["@nuxt/ui", "@vueuse/nuxt", "@nuxt/icon", '@nuxt/eslint'],
 

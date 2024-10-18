@@ -15,6 +15,7 @@
     "@nuxt/icon": "^1.5.2",
     "@nuxt/ui": "^2.18.5",
     "@nuxtjs/date-fns": "^1.5.0",
+    "msw": "^2.4.11",
     "nuxt": "^3.12.4"
   },
   "dependencies": {
@@ -22,7 +23,13 @@
     "@unovis/vue": "1.4.3-beta.0",
     "@vueuse/core": "^11.1.0",
     "@vueuse/nuxt": "^11.1.0",
+    "superjson": "^2.2.1",
     "v-calendar": "^3.1.2",
     "zod": "^3.23.8"
+  },
+  "msw": {
+    "workerDirectory": [
+      "public"
+    ]
   }
 }
