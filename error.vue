@@ -1,16 +1,17 @@
 <script setup lang="ts">
 import type { NuxtError } from '#app'
-import type {PropType} from "vue";
 
 useSeoMeta({
   title: 'Page not found',
   description: 'We are sorry but this page could not be found.'
 })
 
-const props = defineProps({
-  error: Object as () => NuxtError
+defineProps({
+  error: {
+    type: Object as PropType<NuxtError>,
+    required: true
+  }
 })
-
 
 useHead({
   htmlAttrs: {
@@ -21,13 +22,14 @@ useHead({
 
 <template>
   <div>
-    <DashboardMain>
+    <UMain>
       <UContainer>
-        <DashboardPage>
-          <DashboardPageError :error="error" />
-        </DashboardPage>
+        <UPage>
+          <UPageError :error="error" />
+        </UPage>
       </UContainer>
-    </DashboardMain>
+    </UMain>
+
     <UNotifications />
   </div>
 </template>

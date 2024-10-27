@@ -87,30 +87,31 @@ const colors = computed(() => defaultColors.value.map(color => ({
 </script>
 
 <template>
-  <div class="fixed inset-0 flex overflow-hidden">
-    <DashboardPanel
+  <UDashboardLayout>
+    <UDashboardPanel
       :width="250"
       :resizable="{ min: 200, max: 300 }"
+      collapsible
     >
-      <DashboardNavbar
+      <UDashboardNavbar
         class="!border-transparent"
         :ui="{ left: 'flex-1' }"
       >
         <template #left>
           <DashboardDropdown/>
         </template>
-      </DashboardNavbar>
-      <DashboardSidebar>
-        <DashboardSidebarLinks :links="links"/>
+      </UDashboardNavbar>
+      <UDashboardSidebar>
+        <UDashboardSidebarLinks :links="links"/>
         <UDivider/>
-        <DashboardSidebarLinks :links="adminLinks"/>
+        <UDashboardSidebarLinks :links="adminLinks"/>
         <UDivider/>
 <!--        <DashboardSidebarLinks :links="adminLinks"/>-->
         <template #footer>
           <DashboardUserDropDown/>
         </template>
-      </DashboardSidebar>
-    </DashboardPanel>
+      </UDashboardSidebar>
+    </UDashboardPanel>
     <slot/>
-  </div>
+  </UDashboardLayout>
 </template>

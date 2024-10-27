@@ -60,15 +60,15 @@ const actions = (row: Wallet) => [
 </script>
 
 <template>
-  <DashboardPage>
-    <DashboardPanel grow>
-      <DashboardNavbar
+  <UDashboardPage>
+    <UDashboardPanel grow>
+      <UDashboardNavbar
         title="Wallets"
         :badge="wallets.length"
       >
-      </DashboardNavbar>
+      </UDashboardNavbar>
 
-      <DashboardToolbar>
+      <UDashboardToolbar>
         <template #left>
           <USelectMenu
             v-model="selectedStatuses"
@@ -80,7 +80,7 @@ const actions = (row: Wallet) => [
           />
           <UInput v-model="q" placeholder="메모검색" />
         </template>
-      </DashboardToolbar>
+      </UDashboardToolbar>
 
       <UTable
         v-model:sort="sort"
@@ -124,6 +124,6 @@ const actions = (row: Wallet) => [
           </UDropdown>
         </template>
       </UTable>
-    </DashboardPanel>
-  </DashboardPage>
+    </UDashboardPanel>
+  </UDashboardPage>
 </template>

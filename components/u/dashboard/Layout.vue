@@ -8,7 +8,7 @@
 import type { PropType } from 'vue'
 
 const config = {
-  wrapper: 'flex flex-1 w-full min-w-0'
+  wrapper: 'fixed inset-0 flex overflow-hidden'
 }
 
 defineOptions({
@@ -26,5 +26,5 @@ const props = defineProps({
   }
 })
 
-const { ui, attrs } = useUI('dashboard.page', toRef(props, 'ui'), config, toRef(props, 'class'), true)
+const { ui, attrs } = useUI('dashboard.layout', toRef(props, 'ui'), config, toRef(props, 'class'), true)
 </script>
