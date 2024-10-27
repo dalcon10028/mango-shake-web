@@ -15,7 +15,7 @@ export default defineNuxtConfig({
   },
 
   devtools: { enabled: true },
-  modules: ["@nuxt/ui", "@vueuse/nuxt", "@nuxt/icon", '@nuxt/eslint'],
+  modules: ["@nuxt/ui", "@vueuse/nuxt", '@nuxt/eslint', '@nuxt/icon'],
 
   ui: {
     safelistColors: ['primary', 'red', 'orange', 'green']

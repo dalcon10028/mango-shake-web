@@ -100,7 +100,7 @@ const mails = [{
     email: 'drew.moore@example.com'
   },
   subject: 'Website Feedback',
-  body: 'We are in the process of revamping our company website and I would greatly appreciate your feedback on the new design. Your perspective is always insightful and could help us enhance the user experience significantly. Please let me know a convenient time for you to discuss this.',
+  body: 'We are in the process of revamping our company website and I would greatly appreciate your feedback on the new design. Your perspective is always insightful and could help us enhance the wallet experience significantly. Please let me know a convenient time for you to discuss this.',
   date: sub(new Date(), { days: 5 }).toISOString()
 }, {
   id: 10,

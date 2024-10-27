@@ -31,7 +31,7 @@ const links = [{
     exact: true
   }, {
     label: 'Open API 관리',
-    to: '/settings/api-key'
+    to: '/settings/api-keys'
   }],
   tooltip: {
     text: 'Settings',
@@ -40,6 +40,15 @@ const links = [{
 }]
 
 const adminLinks = [{
+  label: 'Wallets',
+  icon: 'i-heroicons-wallet-solid',
+  to: '/wallet'
+}, {
+  label: 'Help & Support',
+  // click: () => isHelpSlideoverOpen.value = true
+}]
+
+const addLinks = [{
   label: 'Invite people',
   icon: 'i-heroicons-plus',
   to: '/'
@@ -93,6 +102,8 @@ const colors = computed(() => defaultColors.value.map(color => ({
       </DashboardNavbar>
       <DashboardSidebar>
         <DashboardSidebarLinks :links="links"/>
+        <UDivider/>
+        <DashboardSidebarLinks :links="adminLinks"/>
         <UDivider/>
 <!--        <DashboardSidebarLinks :links="adminLinks"/>-->
         <template #footer>

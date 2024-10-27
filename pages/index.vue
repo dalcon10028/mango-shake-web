@@ -7,8 +7,8 @@ const items = [[{
   icon: 'i-heroicons-paper-airplane',
   to: '/'
 }, {
-  label: 'New user',
-  icon: 'i-heroicons-user-plus',
+  label: 'New wallet',
+  icon: 'i-heroicons-wallet-plus',
   to: '/'
 }]]
 
