@@ -3,8 +3,14 @@ export default defineNuxtConfig({
   ssr: false,
   hooks: {
     // https://nuxt.com/docs/guide/concepts/rendering#universal-rendering
+    // https://youtu.be/7Lr0QTP1Ro8
     'prerender:routes' ({ routes }) {
       routes.clear() // Do not generate any routes (except the defaults)
+    }
+  },
+  router: {
+    options: {
+      hashMode: true
     }
   },
   runtimeConfig: {
