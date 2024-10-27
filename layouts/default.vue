@@ -14,7 +14,7 @@ const links = [{
 }, {
   id: 'wallets',
   label: '자산',
-  icon: 'i-heroicons-wallets',
+  icon: 'i-heroicons-wallet',
   to: '/wallets',
   tooltip: {
     text: 'Wallet',
@@ -41,7 +41,7 @@ const links = [{
 
 const adminLinks = [{
   label: 'Wallets',
-  icon: 'i-heroicons-wallets-solid',
+  icon: 'i-heroicons-wallet-solid',
   to: '/wallets'
 }, {
   label: 'Help & Support',
