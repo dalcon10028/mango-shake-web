@@ -12,9 +12,9 @@ const links = [{
     shortcuts: ['G', 'H']
   }
 }, {
-  id: 'wallet',
+  id: 'wallets',
   label: '자산',
-  icon: 'i-heroicons-wallet',
+  icon: 'i-heroicons-wallets',
   to: '/wallets',
   tooltip: {
     text: 'Wallet',
@@ -41,8 +41,8 @@ const links = [{
 
 const adminLinks = [{
   label: 'Wallets',
-  icon: 'i-heroicons-wallet-solid',
-  to: '/wallet'
+  icon: 'i-heroicons-wallets-solid',
+  to: '/wallets'
 }, {
   label: 'Help & Support',
   // click: () => isHelpSlideoverOpen.value = true

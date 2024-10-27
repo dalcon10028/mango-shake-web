@@ -260,7 +260,7 @@ function onDrop (results: { removedIndex: number, addedIndex: number, payload: a
 
 function fixActionRestriction () {
   document.body.classList.remove(
-    'smooth-dnd-no-wallet-select',
+    'smooth-dnd-no-wallets-select',
     'smooth-dnd-disable-touch-action'
   )
 }

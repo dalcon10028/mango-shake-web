@@ -7,8 +7,8 @@ const items = [[{
   icon: 'i-heroicons-paper-airplane',
   to: '/'
 }, {
-  label: 'New wallet',
-  icon: 'i-heroicons-wallet-plus',
+  label: 'New wallets',
+  icon: 'i-heroicons-wallets-plus',
   to: '/'
 }]]
 
@@ -17,9 +17,9 @@ const period = ref<Period>('daily')
 </script>
 
 <template>
-  <DashboardPage>
-    <DashboardPanel grow>
-      <DashboardNavbar title="Home">
+  <UDashboardPage>
+    <UDashboardPanel grow>
+      <UDashboardNavbar title="Home">
         <template #right>
           <UTooltip
             text="Notifications"
@@ -51,9 +51,9 @@ const period = ref<Period>('daily')
             />
           </UDropdown>
         </template>
-      </DashboardNavbar>
+      </UDashboardNavbar>
 
-      <DashboardToolbar>
+      <UDashboardToolbar>
         <template #left>
           <HomeDateRangePicker
             v-model="range"
@@ -65,7 +65,7 @@ const period = ref<Period>('daily')
             :range="range"
           />
         </template>
-      </DashboardToolbar>
+      </UDashboardToolbar>
 
       <PanelContent>
         <HomeChart
@@ -78,6 +78,6 @@ const period = ref<Period>('daily')
            <HomeCountries />
         </div>
       </PanelContent>
-    </DashboardPanel>
-  </DashboardPage>
+    </UDashboardPanel>
+  </UDashboardPage>
 </template>
