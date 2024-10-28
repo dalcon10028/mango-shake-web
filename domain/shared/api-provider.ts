@@ -1,12 +1,15 @@
+import { z } from 'zod';
 
 export const ApiProviderName = ['UPBIT'] as const;
 export type ApiProviderName = typeof ApiProviderName[number];
 
-export interface ApiProvider {
-  value: ApiProviderName;
-  name: string;
-  iconUrl: string;
-}
+export const ApiProviderSchema = z.object({
+  value: z.enum(ApiProviderName),
+  name: z.string(),
+  iconUrl: z.string(),
+});
+
+export interface ApiProvider extends z.infer<typeof ApiProviderSchema> {}
 
 export const ApiProviderFactory = (name: ApiProviderName): ApiProvider => {
   switch (name) {

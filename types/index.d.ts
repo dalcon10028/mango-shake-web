@@ -15,10 +15,6 @@ declare module 'vue' {
   }
 }
 
-export const enum ApiProvider {
-  UPBIT = 'UPBIT',
-}
-
 export type UserStatus = 'subscribed' | 'unsubscribed' | 'bounced'
 
 export interface User {

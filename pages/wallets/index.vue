@@ -5,7 +5,7 @@ import {useQuery} from "@tanstack/vue-query";
 import {type Pagination, withPagination} from "~/domain/shared/pagination";
 
 const { $formatDate } = useNuxtApp()
-
+const router = useRouter()
 
 const defaultColumns = [{
   key: 'id',
@@ -38,8 +38,6 @@ const columns = computed(() => defaultColumns.filter(column => selectedColumns.v
 
 const query = computed(() => ({ q: q.value, status: selectedStatuses.value, locations: selectedLocations.value, sort: sort.value.column, order: sort.value.direction }))
 
-console.log('query', query.value)
-
 const { isLoading, isError, data: wallets, error } = useQuery<Wallet[]>({
   queryKey: ['wallets'],
   queryFn: () => {
@@ -54,7 +52,7 @@ const actions = (row: Wallet) => [
   [{
     label: 'Edit',
     icon: 'i-heroicons-pencil-square-20-solid',
-    click: () => console.log('Edit', row.id)
+    click: () => router.push(`/wallets/${row.id}`)
   }]
 ]
 </script>
