@@ -1,5 +1,5 @@
 <template>
-  <div ref="el" v-bind="{ ...attrs, ...$attrs }" :class="[ui.wrapper, grow ? ui.grow : ui.border, collapsible ? ui.collapsible : 'flex']" :style="{ '--width': width && !grow ? `${width}px` : undefined }">
+  <div v-bind="{ ...attrs, ...$attrs }" :class="[ui.wrapper, grow ? ui.grow : ui.border, collapsible ? ui.collapsible : 'flex']" :style="{ '--width': width && !grow ? `${width}px` : undefined }">
     <slot />
 
     <slot name="handle" :on-drag="onDrag">

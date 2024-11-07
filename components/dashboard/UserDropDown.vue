@@ -1,7 +1,10 @@
 <script setup lang="ts">
 // const { isHelpSlideoverOpen } = useDashboard()
 // const { isDashboardSearchModalOpen } = useUIState()
+import {useAuthStore} from "~/store/useAuthStore";
+
 const { metaSymbol } = useShortcuts()
+const { logout, user } = useAuthStore()
 
 const items = computed(() => [
   [{
@@ -15,7 +18,8 @@ const items = computed(() => [
     target: '_blank'
   }], [{
     label: '로그아웃',
-    icon: 'i-heroicons-arrow-left-on-rectangle'
+    icon: 'i-heroicons-arrow-left-on-rectangle',
+    click: () => { logout() }
   }]
 ])
 </script>
@@ -33,12 +37,12 @@ const items = computed(() => [
         color="gray"
         variant="ghost"
         class="w-full"
-        label="dalcon"
+        :label="user?.nickname"
         :class="[open && 'bg-gray-50 dark:bg-gray-800']"
       >
         <template #leading>
           <UAvatar
-            src="https://avatars.githubusercontent.com/u/739984?v=4"
+            :src="user?.profileImageUrl ?? 'assets/icons/mango.jpeg'"
             size="2xs"
           />
         </template>
@@ -55,7 +59,7 @@ const items = computed(() => [
     <template #account>
       <div class="text-left">
         <p class="truncate font-medium text-gray-900 dark:text-white">
-          dalcon10280@gmail.com
+          {{ user?.username }}
         </p>
         <p>
           계정으로 로그인

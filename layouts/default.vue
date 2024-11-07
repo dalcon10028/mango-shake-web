@@ -40,9 +40,13 @@ const links = [{
 }]
 
 const adminLinks = [{
-  label: 'Wallets',
+  label: '지갑관리',
   icon: 'i-heroicons-wallet-solid',
   to: '/wallets'
+}, {
+  label: '종목관리',
+  icon: 'i-majesticons-bitcoin-circle',
+  to: '/symbol-tickers'
 }, {
   label: 'Help & Support',
   // click: () => isHelpSlideoverOpen.value = true
