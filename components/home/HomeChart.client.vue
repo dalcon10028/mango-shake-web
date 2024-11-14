@@ -45,13 +45,13 @@ const y = (d: DataRecord) => d.amount
 
 const total = computed(() => data.value.reduce((acc: number, { amount }) => acc + amount, 0))
 
-const formatNumber = new Intl.NumberFormat('en', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format
+const formatNumber = new Intl.NumberFormat('ko', { style: 'currency', currency: 'KRW', maximumFractionDigits: 0 }).format
 
 const formatDate = (date: Date): string => {
   return ({
-    daily: format(date, 'd MMM'),
-    weekly: format(date, 'd MMM'),
-    monthly: format(date, 'MMM yyy')
+    daily: format(date, 'MMM do'),
+    weekly: format(date, 'MMM do'),
+    monthly: format(date, 'yyyy년 MMM')
   })[props.period]
 }
 

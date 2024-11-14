@@ -1,6 +1,10 @@
 <script setup lang="ts">
+import {useAuthStore} from "~/store/useAuthStore";
+import {Role} from "~/domain/auth/user";
+
 const route = useRoute()
 const appConfig = useAppConfig()
+const { user } = useAuthStore()
 
 const links = [{
   id: 'home',
@@ -108,8 +112,10 @@ const colors = computed(() => defaultColors.value.map(color => ({
       <UDashboardSidebar>
         <UDashboardSidebarLinks :links="links"/>
         <UDivider/>
-        <UDashboardSidebarLinks :links="adminLinks"/>
-        <UDivider/>
+        <template v-if="Role.ADMIN === user?.role">
+          <UDashboardSidebarLinks :links="adminLinks"/>
+          <UDivider/>
+        </template>
 <!--        <DashboardSidebarLinks :links="adminLinks"/>-->
         <template #footer>
           <DashboardUserDropDown/>

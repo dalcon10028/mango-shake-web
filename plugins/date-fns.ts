@@ -1,8 +1,12 @@
 import { defineNuxtPlugin } from '#app';
-import {format, formatDistance} from "date-fns";
+import {format, formatDistance, setDefaultOptions} from "date-fns";
 import {ko} from "date-fns/locale";
 
 export default defineNuxtPlugin(nuxtApp => {
+  setDefaultOptions({
+    locale: ko,
+  });
+
   nuxtApp.provide('formatDate',(rawTime: Date | string, locale = ko)=>{
     const date = new Date(rawTime);
     const now = new Date();
