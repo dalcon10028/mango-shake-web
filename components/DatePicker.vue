@@ -46,6 +46,11 @@ const attrs = {
     :columns="smallerThanSm ? 1 : 2"
     :rows="smallerThanSm ? 2 : 1"
     v-bind="{ ...attrs, ...$attrs }"
+    @dayclick="
+      (_, event) => {
+        event.target.blur();
+      }
+    "
   />
   <VCalendarDatePicker
     v-else

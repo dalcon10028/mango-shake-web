@@ -2,48 +2,45 @@
 import { eachDayOfInterval, eachWeekOfInterval, eachMonthOfInterval, format } from 'date-fns'
 import { VisXYContainer, VisLine, VisAxis, VisArea, VisCrosshair, VisTooltip } from '@unovis/vue'
 import type { Period, Range } from '~/types'
+import {type DataRecord, DataRecordsSchema} from "~/domain/stat";
+import type {PropType} from "vue";
 
 const cardRef = ref<HTMLElement | null>(null)
 
-const props = defineProps({
+const { period, data } = defineProps({
   period: {
     type: String as PropType<Period>,
     required: true
   },
-  range: {
-    type: Object as PropType<Range>,
+  data: {
+    type: Array as PropType<DataRecord[]>,
     required: true
   }
 })
 
-type DataRecord = {
-  date: Date
-  amount: number
-}
-
 const { width } = useElementSize(cardRef)
 
 // We use `useAsyncData` here to have same random data on the client and server
-const { data } = await useAsyncData<DataRecord[]>(async () => {
-  const dates = ({
-    daily: eachDayOfInterval,
-    weekly: eachWeekOfInterval,
-    monthly: eachMonthOfInterval
-  })[props.period](props.range)
-
-  const min = 1000
-  const max = 10000
-
-  return dates.map(date => ({ date, amount: Math.floor(Math.random() * (max - min + 1)) + min }))
-}, {
-  watch: [() => props.period, () => props.range],
-  default: () => []
-})
+// const { data } = await useAsyncData<DataRecord[]>(async () => {
+//   const dates = ({
+//     daily: eachDayOfInterval,
+//     weekly: eachWeekOfInterval,
+//     monthly: eachMonthOfInterval
+//   })[props.period](props.range)
+//
+//   const min = 1000
+//   const max = 10000
+//
+//   return dates.map(date => ({ date, amount: Math.floor(Math.random() * (max - min + 1)) + min }))
+// }, {
+//   watch: [() => props.period, () => props.range],
+//   default: () => []
+// })
 
 const x = (_: DataRecord, i: number) => i
 const y = (d: DataRecord) => d.amount
 
-const total = computed(() => data.value.reduce((acc: number, { amount }) => acc + amount, 0))
+const total = computed(() => data.reduce((acc: number, { amount }) => acc + amount, 0))
 
 const formatNumber = new Intl.NumberFormat('ko', { style: 'currency', currency: 'KRW', maximumFractionDigits: 0 }).format
 
@@ -52,15 +49,15 @@ const formatDate = (date: Date): string => {
     daily: format(date, 'MMM do'),
     weekly: format(date, 'MMM do'),
     monthly: format(date, 'yyyy년 MMM')
-  })[props.period]
+  })[period]
 }
 
 const xTicks = (i: number) => {
-  if (i === 0 || i === data.value.length - 1 || !data.value[i]) {
+  if (i === 0 || i === data.length - 1 || !data[i]) {
     return ''
   }
 
-  return formatDate(data.value[i].date)
+  return formatDate(data[i].date)
 }
 
 const template = (d: DataRecord) => `${formatDate(d.date)}: ${formatNumber(d.amount)}`

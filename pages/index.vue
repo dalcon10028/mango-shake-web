@@ -1,6 +1,9 @@
 <script setup lang="ts">
-import { sub } from 'date-fns'
+import {format, sub} from 'date-fns'
 import type { Period, Range } from '~/types'
+import {useQuery} from "@tanstack/vue-query";
+import {type DataRecord, DataRecordsSchema} from "~/domain/stat";
+import {useAPI} from "~/composables/useAPI";
 
 const items = [[{
   label: 'New mail',
@@ -14,6 +17,19 @@ const items = [[{
 
 const range = ref<Range>({ start: sub(new Date(), { days: 14 }), end: new Date() })
 const period = ref<Period>('daily')
+
+const { data } = useQuery<DataRecord[]>({
+  queryKey: ['revenue', range],
+  queryFn: () => {
+    return useAPI<DataRecord[]>(`/stats/aum`, DataRecordsSchema, {
+      params: {
+        startDate: format(range.value.start, 'yyyy-MM-dd'),
+        endDate: format(range.value.end, 'yyyy-MM-dd'),
+      }
+    })
+  },
+  initialData: [],
+})
 </script>
 
 <template>
@@ -70,7 +86,7 @@ const period = ref<Period>('daily')
       <PanelContent>
         <HomeChart
           :period="period"
-          :range="range"
+          :data="data"
         />
 
         <div class="grid lg:grid-cols-2 lg:items-start gap-8 mt-8">
